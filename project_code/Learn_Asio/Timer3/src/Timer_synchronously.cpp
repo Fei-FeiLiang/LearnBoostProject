@@ -3,7 +3,7 @@
 #include <boost/bind/bind.hpp>
 
 
-void print(const boost::system::error_code &e, boost::asio::steady_timer *t, int *count)
+/*void print(const boost::system::error_code& e, boost::asio::steady_timer* t, int* count)
 {
 	if (*count < 5)
 	{
@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 	std::cout << "Final count is: " << count << std::endl;
 
 	return 0;
-}
+}*/
 
 /*void print(const boost::system::error_code& e,
 	boost::asio::steady_timer* t, int* count)
@@ -43,20 +43,19 @@ int main(int argc, char** argv)
 		t->async_wait(boost::bind(print,
 			boost::asio::placeholders::error, t, count));
 	}
-}
+}*/
 
 int main()
 {
 	boost::asio::io_context io;
 
-	int count = 0;
-	boost::asio::steady_timer t(io, boost::asio::chrono::seconds(1));
-	t.async_wait(boost::bind(print,
-		boost::asio::placeholders::error, &t, &count));
+	boost::asio::steady_timer t(io, boost::asio::chrono::seconds(5));
 
-	io.run();
+	t.wait();
 
-	std::cout << "Final count is " << count << std::endl;
+	std::cout << "hello,world£¡ this is a synchronously timer" << std::endl;
+
+	system("pause");
 
 	return 0;
-}*/
+}
