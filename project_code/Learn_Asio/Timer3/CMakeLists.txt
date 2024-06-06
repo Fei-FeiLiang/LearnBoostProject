@@ -40,4 +40,4 @@ include(${ROOTPATH}/cmake/myboost.cmake)
 
 set_property(TARGET ${TARGET} PROPERTY FOLDER "${SECOND_FOLDER}/${TARGET}")
 
-message(${APP_PARENT_FOLDER_NAME}/${TARGET})
+#message(${APP_PARENT_FOLDER_NAME}/${TARGET})
