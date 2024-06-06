@@ -15,6 +15,8 @@ void print(const boost::system::error_code &e, boost::asio::steady_timer *t, int
 	}
 }
 
+
+//using a timer synchronously
 int main(int argc, char** argv)
 {
 	boost::asio::io_context io;
