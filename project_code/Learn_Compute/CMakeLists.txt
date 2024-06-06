@@ -1,20 +1,13 @@
 cmake_minimum_required (VERSION 3.10)
 
-get_filename_component(TARGET ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+get_filename_component(DIRECTORY_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)    #获取文件夹名称
 
-project(${TARGET})
+project(${DIRECTORY_NAME})
+
+#message(${DIRECTORY_NAME})   #输出文件夹名称
 
 if(NOT ROOTPATH)
   file(TO_CMAKE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../" ROOTPATH)
 endif()
 
-file(GLOB children LIST_DIRECORIES true "${CMAKE_CURRENT_SOURCE_DIR}/*")
-set(dirlist "")
-foreach(child ${children})
-    if(IS_DIRECTORY ${child})
-	    get_filename_component(subdirectory ${child} NAME)
-		if(EXISTS "${child}/CMakeLists.txt")
-		    add_subdirectory(${subdirectory})
-		endif()
-	endif()
-endforeach()
+include(${ROOTPATH}/cmake/addsubdirectory.cmake)

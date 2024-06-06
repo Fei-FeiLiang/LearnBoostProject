@@ -5,7 +5,7 @@ project(boost_cmake_pro)
 # Add sub directories
 add_subdirectory(Learn_Any)
 add_subdirectory(Learn_Compute)
-#add_subdirectory(texture)
+add_subdirectory(Learn_Asio)
 #add_subdirectory(transform)
 #add_subdirectory(coordinate)
 #add_subdirectory(coordinate_test)

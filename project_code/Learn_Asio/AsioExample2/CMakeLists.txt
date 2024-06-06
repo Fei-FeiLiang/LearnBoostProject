@@ -2,6 +2,9 @@ cmake_minimum_required (VERSION 3.10)
 
 get_filename_component(TARGET ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 
+get_filename_component(SECOND_FOLDER_ABSOLUTE ${CMAKE_CURRENT_SOURCE_DIR} DIRECTORY)
+get_filename_component(SECOND_FOLDER ${SECOND_FOLDER_ABSOLUTE} NAME)
+
 project(${TARGET})
 
 #静态库
@@ -19,7 +22,7 @@ endif()
 #file(GLOB MOC_FILES "mocs_*.cpp")
 
 #源文件目录
-file(TO_CMAKE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/src" SOURCEPATH)
+file(TO_CMAKE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" SOURCEPATH)
 
 file(GLOB_RECURSE FORMS_SOURCE "${SOURCEPATH}/*.ui")
 file(GLOB_RECURSE HEADERS_SOURCE "${SOURCEPATH}/*.h")
@@ -31,8 +34,7 @@ file(GLOB_RECURSE RES_SOURCE "${SOURCEPATH}/*.qrc"
 #source_group(TREE ${CMAKE_SOURCE_DIR} FILES ${SRC_FILES})
 #add_executable(${PROJECT_NAME} ${HEAD_FILES} ${SRC_FILES} ${MOC_FILES})
 
-
 include(${ROOTPATH}/cmake/app.cmake)
 include(${ROOTPATH}/cmake/myboost.cmake)
 
-set_property(TARGET ${TARGET} PROPERTY FOLDER "${APP_PARENT_FOLDER_NAME}/${TARGET}")
+set_property(TARGET ${TARGET} PROPERTY FOLDER "${SECOND_FOLDER}/${TARGET}")
